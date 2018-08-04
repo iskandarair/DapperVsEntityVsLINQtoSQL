@@ -28,6 +28,7 @@ namespace DapperExample.Frameworks
                          where c.Country == countryName
                         select c;
             clock.Stop();
+            query.ToList();
             var elapsedTime = clock.ElapsedMilliseconds;
             ResultComparer.getCustomerData(query.ToList(), method);
 
@@ -42,6 +43,7 @@ namespace DapperExample.Frameworks
                         join customer in db.Customers on order.CustomerID equals customer.CustomerID
                         where customer.CustomerID == customerId
                         select order;
+            query.ToList();
             clock.Stop();
             var elapsedTime = clock.ElapsedMilliseconds;
             ResultComparer.GetOrdersByCustomer(query.ToList(), method);
@@ -57,6 +59,7 @@ namespace DapperExample.Frameworks
                             join employee in db.Employees on order.EmployeeID equals employee.EmployeeID
                             where employee.EmployeeID == empId
                             select order;
+            query.ToList();
             clock.Stop();
             var elapsedTime = clock.ElapsedMilliseconds;
             ResultComparer.GetCustomerAndOrdersByEmp(query.ToList(), method);
